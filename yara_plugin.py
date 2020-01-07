@@ -36,9 +36,9 @@ class YaraDockWidget(cutter.CutterDockWidget):
 
     def update_contents(self):
         """Scans the file with YARA rules from ./rules directory."""
-        self.table.setRowCount(0)
-        filename = self.get_filename()
         if not(self.rules_changed):
+            self.table.setRowCount(0)
+            filename = self.get_filename()
             try:
                 import glob, os
                 rules = [f for f in glob.glob('%s\\%s\\*.yar' % (os.path.dirname(os.path.abspath(__file__)), self.rule_basedir))]
